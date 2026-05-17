@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIOGRAPHIA Type</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="page-frame">
+    <header class="top-bar">
+      <a href="../index.html">BACK</a>
+      <h1>BIOGRAPHIA TYPE</h1>
+      <button id="save-button">SAVE</button>
+    </header>
+
+    <section class="type-area">
+      <div id="letter-output" class="letter-output"></div>
+
+      <input
+        id="text-input"
+        type="text"
+        maxlength="6"
+        placeholder="TYPE YOUR WORD"
+        autocomplete="off"
+      />
+
+      <div class="underline"></div>
+    </section>
+
+    <section id="alphabet-grid" class="alphabet-grid"></section>
+  </main>
+
+  <script src="script.js"></script>
+  <div id="image-modal" class="image-modal">
+  <img id="modal-image" src="" alt="">
+</div>
+</body>
+</html>
