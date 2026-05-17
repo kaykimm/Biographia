@@ -219,3 +219,14 @@ body {
 
   object-fit: contain;
 }
+
+.export-caption {
+  display: none;
+  margin: 28px 0 0;
+
+  color: white;
+  font-family: "TimezoneMono", monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
