@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIOGRAPHIA Pattern Lab</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="page-frame">
+    <header class="top-bar">
+      <a href="../index.html">BACK</a>
+      <h1>BIOGRAPHIA PATTERN LAB</h1>
+      <button id="export-button" type="button">SAVE</button>
+    </header>
+
+    <section class="lab-layout">
+      <aside class="left-panel">
+        <h2>pattern lab</h2>
+
+        <label class="upload-box">
+          <span>UPLOAD<br>YOUR IMAGE</span>
+          <input id="image-upload" type="file" accept="image/*">
+        </label>
+
+     <div class="sample-grid">
+
+  <div class="sample-card">
+    <img class="sample-image" src="./samples/sample1.png" alt="">
+  </div>
+
+  <div class="sample-card">
+    <img class="sample-image" src="./samples/sample2.png" alt="">
+  </div>
+
+</div>
+      </aside>
+
+      <section class="canvas-panel">
+        <canvas id="canvas"></canvas>
+      </section>
+
+      <aside class="right-panel">
+        <div class="control">
+          <label for="threshold">threshold</label>
+          <input id="threshold" type="range" min="0" max="255" value="128">
+        </div>
+
+        <div class="control">
+          <label for="contrast">contrast</label>
+          <input id="contrast" type="range" min="0" max="100" value="50">
+        </div>
+
+        <div class="control">
+          <label for="grain">grain</label>
+          <input id="grain" type="range" min="0" max="100" value="0">
+        </div>
+
+        <div class="control">
+          <label for="distort">distort</label>
+          <input id="distort" type="range" min="0" max="100" value="0">
+        </div>
+
+        <div class="control">
+          <label for="dots">dots</label>
+          <input id="dots" type="range" min="0" max="100" value="0">
+        </div>
+
+        <div class="control">
+          <label for="dither">dithering</label>
+          <input id="dither" type="range" min="0" max="100" value="0">
+        </div>
+
+        <div class="control">
+          <label for="edge">edge</label>
+          <input id="edge" type="range" min="0" max="100" value="0">
+        </div>
+
+        <div class="control">
+          <label for="pixel">pixel</label>
+          <input id="pixel" type="range" min="0" max="100" value="0">
+        </div>
+
+        <div class="control">
+          <label for="blur">blur</label>
+          <input id="blur" type="range" min="0" max="20" value="0">
+        </div>
+
+        <div class="control checkbox-control">
+          <label for="invert">invert</label>
+          <input id="invert" type="checkbox">
+        </div>
+
+        <button id="reset-button" type="button">RESET</button>
+      </aside>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
