@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIOGRAPHIA Drawing Field</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="page-frame">
+    <header class="top-bar">
+      <a href="../index.html">BACK</a>
+      <h1>BIOGRAPHIA DRAWING FIELD</h1>
+      <button id="save-button" type="button">SAVE</button>
+    </header>
+
+    <section class="drawing-layout">
+      <aside class="tool-panel">
+        <div class="tool-grid">
+          <button class="tool active" data-tool="pen">PEN</button>
+          <button class="tool" data-tool="eraser">ERASE</button>
+          <button class="tool" data-tool="line">LINE</button>
+          <button class="tool" data-tool="dot">DOT</button>
+        </div>
+
+        <div class="brush-panel">
+          <button class="brush active" data-size="2"></button>
+          <button class="brush" data-size="5"></button>
+          <button class="brush" data-size="10"></button>
+          <button class="brush" data-size="18"></button>
+        </div>
+
+        <div class="pattern-panel">
+          <button class="pattern active" data-pattern="solid"></button>
+          <button class="pattern dots" data-pattern="dots"></button>
+          <button class="pattern lines" data-pattern="lines"></button>
+          <button class="pattern grid" data-pattern="grid"></button>
+        </div>
+
+        <label class="upload-reference">
+          UPLOAD<br>REFERENCE<br>PHOTO
+          <input id="reference-upload" type="file" accept="image/*">
+        </label>
+
+        <button id="reset-button" type="button">RESET<br>YOUR CANVAS</button>
+      </aside>
+
+      <section class="canvas-area">
+        <canvas id="drawing-canvas"></canvas>
+
+        <div id="reference-window" class="reference-window">
+          <button id="close-reference" type="button">×</button>
+          <img id="reference-image" src="" alt="">
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

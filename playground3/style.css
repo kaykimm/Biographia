@@ -1,0 +1,264 @@
+@font-face {
+  font-family: "TimezoneMono";
+  src: url("../Font/timezone-mono.otf") format("opentype");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-image: url("../Images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+}
+
+.page-frame {
+  width: calc(100vw - 80px);
+  min-height: calc(100vh - 80px);
+  margin: 40px;
+  padding: 24px;
+
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+}
+
+.top-bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  font-family: "TimezoneMono", monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.top-bar a,
+.top-bar button {
+  color: white;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.top-bar h1 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+#save-button {
+  justify-self: end;
+}
+
+.drawing-layout {
+  height: calc(100vh - 160px);
+  margin-top: 28px;
+
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 24px;
+}
+
+.tool-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid white;
+}
+
+.tool {
+  height: 42px;
+  background: black;
+  color: white;
+  border: 1px solid white;
+  font-family: "TimezoneMono", monospace;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.tool.active,
+.tool:hover {
+  background: white;
+  color: black;
+}
+
+.brush-panel {
+  border: 1px solid white;
+  padding: 14px;
+  display: grid;
+  gap: 12px;
+}
+
+.brush {
+  width: 100%;
+  height: 18px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  cursor: pointer;
+}
+
+.brush[data-size="5"] {
+  border-bottom-width: 5px;
+}
+
+.brush[data-size="10"] {
+  border-bottom-width: 10px;
+}
+
+.brush[data-size="18"] {
+  border-bottom-width: 18px;
+}
+
+.brush.active {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.pattern-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid white;
+}
+
+.pattern {
+  aspect-ratio: 1 / 1;
+  border: 1px solid white;
+  background: white;
+  cursor: pointer;
+}
+
+.pattern.dots {
+  background-image: radial-gradient(black 2px, transparent 2px);
+  background-size: 8px 8px;
+}
+
+.pattern.lines {
+  background-image: repeating-linear-gradient(
+    45deg,
+    black 0 2px,
+    white 2px 7px
+  );
+}
+
+.pattern.grid {
+  background-image:
+    linear-gradient(black 1px, transparent 1px),
+    linear-gradient(90deg, black 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+.pattern.active {
+  filter: invert(1);
+  outline: 2px solid white;
+  outline-offset: -3px;
+}
+
+.upload-reference,
+#reset-button {
+  min-height: 92px;
+  border: 1px solid white;
+  background: black;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "TimezoneMono", monospace;
+  font-size: 11px;
+  line-height: 1.25;
+  text-align: center;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+.upload-reference:hover,
+#reset-button:hover {
+  background: white;
+  color: black;
+}
+
+.upload-reference input {
+  display: none;
+}
+
+.canvas-area {
+  position: relative;
+  border: 1px solid white;
+  overflow: hidden;
+  background: black;
+}
+
+#drawing-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: crosshair;
+}
+
+.reference-window {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+
+  width: 280px;
+  height: 220px;
+
+  border: 1px solid white;
+  background: black;
+
+  display: none;
+  resize: both;
+  overflow: hidden;
+
+  z-index: 10;
+  cursor: move;
+}
+
+.reference-window.active {
+  display: block;
+}
+
+.reference-window img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+#close-reference {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+
+  width: 24px;
+  height: 24px;
+
+  background: black;
+  border: 1px solid white;
+  color: white;
+
+  font-size: 18px;
+  line-height: 18px;
+  cursor: pointer;
+
+  z-index: 20;
+}
+
+#close-reference:hover {
+  background: white;
+  color: black;
+}
