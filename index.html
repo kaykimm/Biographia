@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>BIOGRAPHIA Playground</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+<button id="sound-toggle" type="button">SOUND ON</button>
+<audio id="bg-audio" src="./audio-for-biographia.mp3" loop></audio>
+  <main class="landing-page">
+    <a href="./playground1/" class="card">
+      <div class="card-top">
+        <span>*</span>
+        <span>BIOGRAPHIA Playground</span>
+        <span>01</span>
+      </div>
+
+      <div class="card-title">
+        <h2>Type<br>Generator</h2>
+      </div>
+
+      <div class="card-info">
+        <p>01<br>Generate words using the BIOGRAPHIA letterform system.</p>
+        <p>02<br>Switch between white and black backgrounds.</p>
+        <p>03<br>Export your composition as an image.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="card-number">1</div>
+    </a>
+
+
+    <a href="./playground2/" class="card">
+      <div class="card-top">
+        <span>*</span>
+        <span>BIOGRAPHIA Playground</span>
+        <span>02</span>
+      </div>
+
+      <div class="card-title">
+        <h2>Image<br>Lab</h2>
+      </div>
+
+      <div class="card-info">
+        <p>01<br>Upload an image and transform it through visual effects.</p>
+        <p>02<br>Extract texture, contrast, rhythm, and pattern.</p>
+        <p>03<br>Download the processed result.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="card-number">2</div>
+    </a>
+
+    <a href="./playground3/" class="card">
+      <div class="card-top">
+        <span>*</span>
+        <span>BIOGRAPHIA Playground</span>
+        <span>03</span>
+      </div>
+
+      <div class="card-title">
+        <h2>Drawing<br>Field</h2>
+      </div>
+
+      <div class="card-info">
+        <p>01<br>Draw directly with lines, marks, and gestures.</p>
+        <p>02<br>Create organic traces through manual movement.</p>
+        <p>03<br>Save your drawing as an image.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="card-number">3</div>
+    </a>
+  </main>
+  <script>
+  const audio = document.getElementById("bg-audio");
+
+  document.body.addEventListener("click", async () => {
+    try {
+      audio.volume = 0.5;
+      await audio.play();
+      console.log("audio is playing");
+    } catch (error) {
+      console.log("audio play failed:", error);
+    }
+  }, { once: true });
+</script>
+<script src="script.js"></script>
+</body>
+</html>
