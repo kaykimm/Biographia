@@ -295,11 +295,6 @@ function drawPlaceholder() {
   ctx.strokeStyle = "white";
   ctx.lineWidth = 1;
   ctx.strokeRect(0, 0, canvas.width, canvas.height);
-
-  ctx.fillStyle = "white";
-  ctx.font = "24px monospace";
-  ctx.textAlign = "center";
-  ctx.fillText("UPLOAD YOUR IMAGE", canvas.width / 2, canvas.height / 2);
 }
 
 function resetControls() {
