@@ -166,8 +166,9 @@ body {
 }
 
 .upload-reference,
+#undo-button,
 #reset-button {
-  min-height: 92px;
+  min-height: 77px;
   border: 1px solid white;
   background: black;
   color: white;
@@ -186,6 +187,7 @@ body {
 }
 
 .upload-reference:hover,
+#undo-button:hover,
 #reset-button:hover {
   background: white;
   color: black;

@@ -1,6 +1,8 @@
 const canvas = document.getElementById("drawing-canvas");
 const ctx = canvas.getContext("2d");
 
+const undoButton = document.getElementById("undo-button");
+
 const toolButtons = document.querySelectorAll(".tool");
 const brushButtons = document.querySelectorAll(".brush");
 const patternButtons = document.querySelectorAll(".pattern");
@@ -25,14 +27,21 @@ let startX = 0;
 let startY = 0;
 let savedCanvas = null;
 
+let history = [];
+const maxHistory = 30;
+
 function resizeCanvas() {
   const rect = canvas.parentElement.getBoundingClientRect();
 
   canvas.width = rect.width;
   canvas.height = rect.height;
 
+  ctx.globalCompositeOperation = "source-over";
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  history = [];
+  saveState();
 }
 
 function getPosition(event) {
@@ -44,20 +53,40 @@ function getPosition(event) {
   };
 }
 
+function saveState() {
+  if (!canvas.width || !canvas.height) return;
+
+  history.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+
+  if (history.length > maxHistory) {
+    history.shift();
+  }
+}
+
+function undoCanvas() {
+  if (history.length <= 1) return;
+
+  history.pop();
+
+  const previousState = history[history.length - 1];
+  ctx.globalCompositeOperation = "source-over";
+  ctx.putImageData(previousState, 0, 0);
+}
+
 function setStrokeStyle() {
   ctx.lineWidth = brushSize;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
 
- if (currentTool === "eraser") {
-  ctx.globalCompositeOperation = "destination-out";
-  ctx.strokeStyle = "rgba(0,0,0,1)";
-  ctx.fillStyle = "rgba(0,0,0,1)";
-} else {
-  ctx.globalCompositeOperation = "source-over";
-  ctx.strokeStyle = "white";
-  ctx.fillStyle = "white";
-}
+  if (currentTool === "eraser") {
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.strokeStyle = "rgba(0,0,0,1)";
+    ctx.fillStyle = "rgba(0,0,0,1)";
+  } else {
+    ctx.globalCompositeOperation = "source-over";
+    ctx.strokeStyle = "white";
+    ctx.fillStyle = "white";
+  }
 }
 
 function drawPatternDot(x, y) {
@@ -156,7 +185,12 @@ function draw(event) {
 }
 
 function stopDrawing() {
+  if (!isDrawing) return;
+
   isDrawing = false;
+  ctx.globalCompositeOperation = "source-over";
+
+  saveState();
 }
 
 toolButtons.forEach((button) => {
@@ -187,9 +221,14 @@ patternButtons.forEach((button) => {
 });
 
 resetButton.addEventListener("click", () => {
+  ctx.globalCompositeOperation = "source-over";
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  saveState();
 });
+
+undoButton.addEventListener("click", undoCanvas);
 
 saveButton.addEventListener("click", () => {
   const link = document.createElement("a");
