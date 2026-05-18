@@ -230,3 +230,35 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.page-frame {
+  width: calc(100vw - 80px);
+  max-width: calc(100vw - 80px);
+  overflow: hidden;
+}
+
+.alphabet-grid {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.letter-card {
+  min-width: 0;
+}
+
+.letter-card img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

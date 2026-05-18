@@ -34,7 +34,7 @@ const descriptions = {
 };
 
 function renderLetters() {
-  const value = input.value.toLowerCase().slice(0, 6);
+  const value = input.value.toLowerCase().slice(0, 5);
 
   input.value = value;
   output.innerHTML = "";
